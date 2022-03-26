@@ -6,10 +6,16 @@ alternatively, download a link from web on your server and get a link so you can
 ## install
 1. edit `server_copy.py` file:
 
-set `server_dir` to servername with the directory you want to copy files into. for instance:  
+set `server_name` to servername with the username. for instance:  
 
 ```bash
-erfan@server.com:/home/erfan/Downloads/
+erfan@server.com
+```
+
+set `server_directory_name` to directory you want to copy files into. for instance:  
+
+```bash
+/home/erfan/Downloads/
 ```
 
 set `server_access_dir` to the link connected to the directory. for instance:  
