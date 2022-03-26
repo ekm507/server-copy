@@ -48,3 +48,7 @@ cs filename
 
 to give an alternative name to file in the server use `-a` option. to have a random alternative name use `-r` option.
 
+to download from a link into the server use `-l` switch to specify the link.
+```bash
+cs -l link -a alternativename
+```
