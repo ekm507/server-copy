@@ -5,6 +5,9 @@ import random
 import os
 import sys
 
+server_dir = ''
+server_access_dir = ''
+
 def copy_file():
     filename = args.filename
 
@@ -18,6 +21,13 @@ def copy_file():
             new_filename = str(random.randint(0, 10000))
     else:
         new_filename = filename
+
+    exit_code = os.system(f'scp {filename} {server_dir}{new_filename}')
+
+    if exit_code == 0:
+        print(server_access_dir+new_filename)
+    else:
+        sys.exit(1)
 
 def copy_link():
     pass
