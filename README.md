@@ -26,3 +26,19 @@ for doing this, you need to set a reverse proxy or alias in your webserver appli
 ./install.sh
 ```
 
+## usage
+
+run this with `cs` command:
+
+```bash
+cs --help
+```
+
+to copy a file into server:
+
+```bash
+cs filename
+```
+
+to give an alternative name to file in the server use `-a` option. to have a random alternative name use `-r` option.
+
