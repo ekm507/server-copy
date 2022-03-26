@@ -5,7 +5,9 @@ import random
 import os
 import sys
 
-server_dir = ''
+server_name = ''
+server_directory_name = ''
+server_dir = server_name + ':' + server_directory_name
 server_access_dir = ''
 
 def copy_file():
@@ -30,7 +32,33 @@ def copy_file():
         sys.exit(1)
 
 def copy_link():
-    pass
+
+    link = args.link
+
+    if args.alternative != None:
+        new_filename = args.alternative
+
+    elif args.random_alternative == True:
+            new_filename = str(random.randint(0, 10000))
+    
+    elif args.filename != None:
+        new_filename = args.filename
+    else:
+        print('please specify a filename')
+        sys.exit(1)
+
+    command_remote = f'wget -O {server_directory_name}{new_filename} "{link}"'
+    command_filename = '/tmp/copy_remote_command.sh'
+    with open(command_filename, 'w') as command_file:
+        print('#!/usr/bin/bash', file=command_file)
+        print(command_remote, file=command_file)
+
+    exit_code = os.system(f'ssh {server_name} bash -s < {command_filename} ')
+    if exit_code == 0:
+        print(server_access_dir+new_filename)
+    else:
+        sys.exit(1)
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-a', '--alternative',
